@@ -1,4 +1,4 @@
-package com.msparrow.web_service.caneta;
+package com.msparrow.web_service.model;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 

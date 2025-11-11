@@ -1,4 +1,4 @@
-package com.msparrow.web_service.caneta;
+package com.msparrow.web_service.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.msparrow.web_service.model.Caneta;
+import com.msparrow.web_service.model.Cores;
+import com.msparrow.web_service.repository.CanetaRepository;
 
 import lombok.RequiredArgsConstructor;
 
