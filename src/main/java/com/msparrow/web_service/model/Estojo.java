@@ -7,7 +7,6 @@ import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Entity
@@ -23,9 +22,6 @@ public class Estojo {
     @jakarta.persistence.OneToMany(mappedBy = "estojo")
     @lombok.ToString.Exclude
     @lombok.EqualsAndHashCode.Exclude
-    private List<Caneta> canetas;
-
-    @OneToOne(mappedBy = "estojo")
-    private User dono;
+    public List<Caneta> canetas;
 
 }

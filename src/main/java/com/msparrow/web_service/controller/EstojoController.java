@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.msparrow.web_service.model.Estojo;
+import com.msparrow.web_service.repository.CanetaRepository;
 import com.msparrow.web_service.repository.EstojoRepository;
-import com.msparrow.web_service.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,12 +23,12 @@ import lombok.RequiredArgsConstructor;
 public class EstojoController {
 
     private final EstojoRepository repository;
-    private final UserRepository userRepository;
+    private final CanetaRepository canetaRepository;
 
     @PutMapping
-    public Estojo criar(@RequestParam Integer dono) {
+    public Estojo criar(@RequestParam Integer caneta) {
         final Estojo estojo = new Estojo();
-        estojo.setDono(userRepository.findById(dono).orElse(null));
+        estojo.canetas.add(canetaRepository.findById(caneta).orElse(null));
 
         return repository.save(estojo);
     }
