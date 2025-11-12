@@ -22,10 +22,10 @@ public class Estojo {
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
-    private Cores cor;
+    private CoresType cor;
 
     @OneToMany(mappedBy = "estojo")
-    public List<Caneta> canetas;
+    private List<Caneta> canetas;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

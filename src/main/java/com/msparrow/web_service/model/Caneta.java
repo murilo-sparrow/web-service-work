@@ -20,7 +20,7 @@ public class Caneta {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private Cores cor;
+    private CoresType cor;
     private int tinta;
     private boolean tampada;
 

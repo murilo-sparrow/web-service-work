@@ -1,5 +1,5 @@
 package com.msparrow.web_service.model;
 
-public enum Cores {
+public enum CoresType {
     AZUL, VERMELHO, PRETO
 }

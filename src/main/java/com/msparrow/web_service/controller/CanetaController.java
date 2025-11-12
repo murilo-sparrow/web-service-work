@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msparrow.web_service.dto.CanetaDto;
 import com.msparrow.web_service.model.Caneta;
-import com.msparrow.web_service.model.Cores;
+import com.msparrow.web_service.model.CoresType;
 import com.msparrow.web_service.repository.CanetaRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class CanetaController {
     private final CanetaRepository repository;
 
     @PutMapping
-    public Caneta criar(@RequestParam Cores cor) {
+    public Caneta criar(@RequestParam CoresType cor) {
         final Caneta caneta = new Caneta();
         caneta.setCor(cor);
 
@@ -33,8 +34,11 @@ public class CanetaController {
     }
 
     @GetMapping("/{index}")
-    public ResponseEntity<Caneta> ver(@PathVariable Integer index) {
-        return ResponseEntity.of(repository.findById(index));
+    public ResponseEntity<CanetaDto> ver(@PathVariable Integer index) {
+        Caneta caneta = repository.findById(index).orElse(null);
+        Integer estojoId = caneta.getEstojo() != null ? caneta.getEstojo().getId() : null;
+        CanetaDto dto = new CanetaDto(caneta.getId(), caneta.getCor(), caneta.getTinta(), caneta.isTampada(), estojoId);
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping("/escrever")
