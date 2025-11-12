@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.msparrow.web_service.model.Estojo;
-import com.msparrow.web_service.repository.EstojoRepository;
+import com.msparrow.web_service.model.User;
 import com.msparrow.web_service.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,27 +18,26 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/estojo")
-public class EstojoController {
+@RequestMapping("/user")
+public class UserController {
 
-    private final EstojoRepository repository;
-    private final UserRepository userRepository;
+    private final UserRepository repository;
 
     @PutMapping
-    public Estojo criar(@RequestParam Integer dono) {
-        final Estojo estojo = new Estojo();
-        estojo.setDono(userRepository.findById(dono).orElse(null));
+    public User criar(@RequestParam String nome) {
+        final User user = new User();
+        user.setNome(nome);
 
-        return repository.save(estojo);
+        return repository.save(user);
     }
 
     @GetMapping("/{index}")
-    public ResponseEntity<Estojo> ver(@PathVariable Integer index) {
+    public ResponseEntity<User> ver(@PathVariable Integer index) {
         return ResponseEntity.of(repository.findById(index));
     }
 
     @DeleteMapping("/excluir")
-    public void excluir(@RequestParam("estojo") Integer index) {
+    public void excluir(@RequestParam("user") Integer index) {
         repository.deleteById(index);
     }
 
