@@ -5,8 +5,13 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -16,12 +21,14 @@ public class Estojo {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+    @Enumerated(EnumType.STRING)
+    private Cores cor;
 
-    // One pencil case has many pens. "mappedBy" points to the field in Caneta that
-    // owns the FK.
-    @jakarta.persistence.OneToMany(mappedBy = "estojo")
-    @lombok.ToString.Exclude
-    @lombok.EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "estojo")
     public List<Caneta> canetas;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

@@ -47,10 +47,6 @@ public class CanetaController {
     public void destampar(@RequestParam("caneta") Integer index) {
         Caneta caneta = repository.getReferenceById(index);
         caneta.setTampada(!caneta.isTampada());
-
-        // Caneta caneta = repository.findById(index).orElse(null);
-        // caneta.setTampada(!caneta.isTampada());
-
     }
 
     @DeleteMapping("/excluir")
