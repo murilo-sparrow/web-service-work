@@ -41,12 +41,6 @@ public class EstojoController {
         return repository.save(estojo);
     }
 
-    @GetMapping("/{index}/listar")
-    public ResponseEntity<List<Caneta>> listar(@PathVariable Integer index) {
-        // TODO Implementar usadno DTO
-        return null;
-    }
-
     @GetMapping("/{index}")
     public ResponseEntity<EstojoDto> ver(@PathVariable Integer index) {
         Estojo estojo = repository.findById(index).orElse(null);
