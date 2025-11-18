@@ -54,6 +54,9 @@ public class UserController {
     @GetMapping("/{index}")
     public ResponseEntity<UserDto> ver(@PathVariable Integer index) {
         User user = repository.findById(index).orElse(null);
+        if (user == null) {
+            return null;
+        }
         List<Integer> EstojoIds = user.getEstojos().stream().map(e -> e.getId()).toList();
         UserDto dto = new UserDto(user.getId(), user.getNome(), EstojoIds);
         return ResponseEntity.ok(dto);

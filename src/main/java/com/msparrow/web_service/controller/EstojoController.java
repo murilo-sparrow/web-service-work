@@ -44,6 +44,9 @@ public class EstojoController {
     @GetMapping("/{index}")
     public ResponseEntity<EstojoDto> ver(@PathVariable Integer index) {
         Estojo estojo = repository.findById(index).orElse(null);
+        if (estojo == null) {
+            return null;
+        }
         Integer userId = estojo.getUser() != null ? estojo.getUser().getId() : null;
         List<Integer> canetaIds = estojo.getCanetas().stream().map(c -> c.getId()).toList();
         EstojoDto dto = new EstojoDto(estojo.getId(), estojo.getCor(),
