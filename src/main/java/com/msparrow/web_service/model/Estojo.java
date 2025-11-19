@@ -1,26 +1,17 @@
 package com.msparrow.web_service.model;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
-public class Estojo {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+@EntityListeners(AuditingEntityListener.class)
+public class Estojo extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CoresType cor;

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.msparrow.web_service.model.Estojo;
 
 @Repository
-public interface EstojoRepository extends JpaRepository<Estojo, Integer> {
+public interface EstojoRepository extends BaseRepository {
 }

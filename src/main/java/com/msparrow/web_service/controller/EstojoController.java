@@ -48,7 +48,7 @@ public class EstojoController {
             return null;
         }
         Integer userId = estojo.getUser() != null ? estojo.getUser().getId() : null;
-        List<Integer> canetaIds = estojo.getCanetas().stream().map(c -> c.getId()).toList();
+        List<Integer> canetaIds = estojo.getCanetas().stream().map(Caneta::getId).toList();
         EstojoDto dto = new EstojoDto(estojo.getId(), estojo.getCor(),
                 canetaIds, userId);
         return ResponseEntity.ok(dto);

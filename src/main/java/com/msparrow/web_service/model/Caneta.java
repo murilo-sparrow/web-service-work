@@ -1,23 +1,13 @@
 package com.msparrow.web_service.model;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
-public class Caneta {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+public class Caneta extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CoresType cor;

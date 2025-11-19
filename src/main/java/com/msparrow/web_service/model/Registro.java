@@ -1,33 +1,19 @@
 package com.msparrow.web_service.model;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Data;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
-public class Registro {
+public class Registro extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
-
-    public Registro(CoresType cor, String texto, Date writeDate) {
-        this.cor = cor;
-        this.texto = texto;
-        this.writeDate = writeDate;
-    }
-
-    public Registro() {
-
-    }
-
+    @Enumerated(EnumType.STRING)
     private CoresType cor;
+
     private String texto;
     private Date writeDate;
 }
