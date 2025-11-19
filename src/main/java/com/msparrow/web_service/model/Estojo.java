@@ -21,6 +21,7 @@ public class Estojo {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     @Enumerated(EnumType.STRING)
     private CoresType cor;
 
