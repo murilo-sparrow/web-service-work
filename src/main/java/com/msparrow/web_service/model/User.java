@@ -1,12 +1,13 @@
 package com.msparrow.web_service.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
-
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "users")

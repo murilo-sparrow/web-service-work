@@ -1,22 +1,23 @@
 package com.msparrow.web_service.dto;
 
-import java.util.List;
-
 import lombok.Data;
 
-@Data
-public class UserDto {
+import java.util.Date;
+import java.util.List;
 
-    public UserDto(Integer id, String nome, List<Integer> estojos) {
-        this.id = id;
+@Data
+public class UserDto extends BaseDto {
+
+    public UserDto(Integer id, Date createdDate, Date modifiedDate, String nome, List<Integer> estojos) {
+        super(id, createdDate, modifiedDate);
         this.nome = nome;
         this.estojos = estojos;
     }
 
-    public UserDto() {
+    public UserDto(Integer id, Date createdDate, Date modifiedDate) {
+        super(id, createdDate, modifiedDate);
     }
 
-    private Integer id;
     private String nome;
     private List<Integer> estojos;
 

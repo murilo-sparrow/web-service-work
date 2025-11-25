@@ -1,25 +1,25 @@
 package com.msparrow.web_service.dto;
 
-import java.util.List;
-
 import com.msparrow.web_service.model.CoresType;
-
 import lombok.Data;
 
-@Data
-public class EstojoDto {
+import java.util.Date;
+import java.util.List;
 
-    public EstojoDto(Integer id, CoresType cor, List<Integer> canetas, Integer userId) {
-        this.id = id;
+@Data
+public class EstojoDto extends BaseDto {
+
+    public EstojoDto(Integer id, Date createdDate, Date modifiedDate, CoresType cor, List<Integer> canetas, Integer userId) {
+        super(id, createdDate, modifiedDate);
         this.cor = cor;
         this.canetas = canetas;
         this.userId = userId;
     }
 
-    public EstojoDto() {
+    public EstojoDto(Integer id, Date createdDate, Date modifiedDate) {
+        super(id, createdDate, modifiedDate);
     }
 
-    private Integer id;
     private CoresType cor;
     private List<Integer> canetas;
     private Integer userId;

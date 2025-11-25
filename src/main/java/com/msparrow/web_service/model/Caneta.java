@@ -3,8 +3,6 @@ package com.msparrow.web_service.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Data
 public class Caneta extends BaseEntity {

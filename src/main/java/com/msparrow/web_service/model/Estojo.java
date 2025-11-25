@@ -6,8 +6,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Data
 @EntityListeners(AuditingEntityListener.class)

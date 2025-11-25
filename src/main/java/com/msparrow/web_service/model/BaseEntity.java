@@ -21,10 +21,10 @@ public class BaseEntity {
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    public Date createdDate;
+    private Date createdDate;
 
     @LastModifiedDate
     @Column(insertable = false)
-    public Date modifiedDate;
+    private Date modifiedDate;
 
 }
