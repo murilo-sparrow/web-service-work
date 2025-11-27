@@ -26,7 +26,7 @@ public class EstojoController {
 
     @GetMapping("/{index}")
     public ResponseEntity<EstojoDto> ver(@PathVariable Integer index) {
-        return service.ver(index);
+        return ResponseEntity.ok(service.ver(index));
     }
 
     @PostMapping("/adicionarCaneta")

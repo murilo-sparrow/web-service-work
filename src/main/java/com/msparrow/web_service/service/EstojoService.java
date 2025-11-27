@@ -30,6 +30,11 @@ public class EstojoService extends BaseService<Estojo, EstojoDto> {
 
     @Override
     EstojoDto addDto(Estojo estojo) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        modelMapper.typeMap(Estojo.class, EstojoDto.class).addMappings(mapper -> {
+//            mapper.map(Estojo::getCanetas, EstojoDto::setCanetas);
+//        });
+//        return modelMapper.map(estojo, EstojoDto.class);
         if (estojo == null) {
             return null;
         }

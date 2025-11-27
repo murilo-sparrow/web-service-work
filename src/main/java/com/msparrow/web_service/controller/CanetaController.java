@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@Transactional
+
 @RestController
 @RequestMapping("/caneta")
 public class CanetaController {
@@ -22,39 +22,45 @@ public class CanetaController {
         this.service = service;
     }
 
+    @Transactional
     @PutMapping
     public Caneta criar() {
         return service.criar(new Caneta());
     }
 
+    @Transactional
     @GetMapping("/{index}")
     public ResponseEntity<CanetaDto> ver(@PathVariable Integer index) {
         if (service.ver(index) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return service.ver(index);
+            return ResponseEntity.ok(service.ver(index));
         }
     }
 
+    @Transactional
     @GetMapping("/registro/{index}")
     public ResponseEntity<Registro> verRegistro(@PathVariable Integer index) {
         if (service.verRegistro(index) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return service.verRegistro(index);
+            return ResponseEntity.ok(service.verRegistro(index));
         }
     }
 
+    @Transactional
     @GetMapping("/escrever")
     public String escrever(@RequestParam("caneta") Integer index, @RequestBody String texto, @RequestHeader Date writeDate) {
         return service.escrever(index, texto, writeDate);
     }
 
+    @Transactional
     @GetMapping("/altTampa")
     public void destampar(@RequestParam("caneta") Integer index) {
         service.destampar(index);
     }
 
+    @Transactional
     @DeleteMapping("/excluir")
     public void excluir(@RequestParam("caneta") Integer index) {
         service.excluir(index);

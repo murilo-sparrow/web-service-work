@@ -3,7 +3,6 @@ package com.msparrow.web_service.service;
 import com.msparrow.web_service.dto.BaseDto;
 import com.msparrow.web_service.model.BaseEntity;
 import com.msparrow.web_service.repository.BaseRepository;
-import org.springframework.http.ResponseEntity;
 
 public abstract class BaseService<T extends BaseEntity, D extends BaseDto> {
 
@@ -20,11 +19,10 @@ public abstract class BaseService<T extends BaseEntity, D extends BaseDto> {
         return repository.save(obj);
     }
 
-    public ResponseEntity<D> ver(Integer index) {
+    public D ver(Integer index) {
         T entity = repository.findById(index).orElse(null);
         if (entity == null) return null;
-        D dto = addDto(entity);
-        return ResponseEntity.ok(dto);
+        return addDto(entity);
     }
 
     abstract D addDto(T obj);

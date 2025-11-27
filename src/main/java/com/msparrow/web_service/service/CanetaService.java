@@ -6,7 +6,6 @@ import com.msparrow.web_service.model.CoresType;
 import com.msparrow.web_service.model.Registro;
 import com.msparrow.web_service.repository.CanetaRepository;
 import com.msparrow.web_service.repository.RegistroRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -37,10 +36,8 @@ public class CanetaService extends BaseService<Caneta, CanetaDto> {
         return new CanetaDto(caneta.getId(), caneta.getCreatedDate(), caneta.getModifiedDate(), caneta.getCor(), caneta.getTinta(), caneta.isTampada(), estojoId);
     }
 
-    public ResponseEntity<Registro> verRegistro(Integer index) {
-        Registro registro = registroRepository.findById(index).orElse(null);
-        if (registro == null) return null;
-        return ResponseEntity.ok(registro);
+    public Registro verRegistro(Integer index) {
+        return registroRepository.findById(index).orElse(null);
     }
 
     public String escrever(Integer index, String texto, Date writeDate) {

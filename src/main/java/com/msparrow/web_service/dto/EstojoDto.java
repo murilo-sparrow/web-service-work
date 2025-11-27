@@ -3,6 +3,7 @@ package com.msparrow.web_service.dto;
 import com.msparrow.web_service.model.CoresType;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class EstojoDto extends BaseDto {
 
     public EstojoDto(Integer id, Date createdDate, Date modifiedDate) {
         super(id, createdDate, modifiedDate);
+    }
+
+    public EstojoDto() {
     }
 
     private CoresType cor;
